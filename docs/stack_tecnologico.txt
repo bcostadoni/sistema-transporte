@@ -1,0 +1,31 @@
+### 🧱 **Backend:**
+
+* **Lenguaje:** Java
+* **Framework:** Spring Boot
+* **Controladores REST:** Spring Web
+* **Documentación de API:** Swagger / Springdoc OpenAPI
+* **Seguridad (a futuro o parcial):** Spring Security
+* **ORM / Persistencia:** Spring Data JPA
+* **Base de Datos:** MySQL
+* **Gestión de dependencias:** Maven
+* **Pruebas:** JUnit (y posiblemente Mockito para mocks)
+* **IDE:** Visual Studio Code
+
+---
+
+### 🧑‍🎨 **Frontend:**
+
+* **Tecnología:** HTML, CSS, JavaScript
+* **Frameworks/librerías:** No se especificó uno aún, pero estás manejando las vistas con archivos HTML (podrías sumar React o Vue si lo deseas)
+* **Consumo de API REST:** fetch/AJAX desde JS
+
+---
+
+### ⚙️ **Infraestructura / DevOps / Herramientas:**
+
+* **Control de versiones:** Git + GitHub
+* **Gestión de tareas:** Issues de GitHub (y Trello mencionado)
+* **Swagger UI:** para probar endpoints
+* **MySQL Workbench:** para gestión de base de datos
+
+---
