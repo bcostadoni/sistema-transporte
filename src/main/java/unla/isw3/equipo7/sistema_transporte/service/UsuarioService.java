@@ -4,25 +4,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import unla.isw3.equipo7.sistema_transporte.entity.Usuario;
-import unla.isw3.equipo7.sistema_transporte.repository.UsuarioRepository;
+import unla.isw3.equipo7.sistema_transporte.repository.IUsuarioRepository;
 
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private IUsuarioRepository usuarioRepository;
 
-    // Guardar un nuevo usuario
-    public Usuario saveUsuario(Usuario usuario) {
+    public Usuario crearUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    // Buscar un usuario por ID
-    public Optional<Usuario> getUsuarioById(Integer id) {
+    public Usuario actualizarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
+    public void eliminarUsuario(Integer idUsuario) {
+        usuarioRepository.deleteById(idUsuario);
+    }
+
+    public Optional<Usuario> obtenerPorId(Integer id) {
         return usuarioRepository.findById(id);
     }
 
-    // Otros métodos de negocio si es necesario (ej: actualizar, eliminar, etc)
+    public List<Usuario> obtenerTodos() {
+        return usuarioRepository.findAll();
+    }
+    
 }
