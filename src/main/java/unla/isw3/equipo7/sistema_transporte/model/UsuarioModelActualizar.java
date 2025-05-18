@@ -10,5 +10,4 @@ public class UsuarioModelActualizar {
     private String password;
     private String tipo_documento;
     private String numero_documento;
-
 }
