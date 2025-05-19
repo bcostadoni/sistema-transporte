@@ -10,4 +10,6 @@ public class ViajeModelCrear {
     private float monto;
     private Integer usuarioId;
     private Integer metodoPagoId;
+    private Integer estacionOrigenId;
+    private Integer estacionDestinoId;
 }
