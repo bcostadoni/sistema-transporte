@@ -26,6 +26,13 @@ public class Viaje {
     @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id_metodo_pago")
     private MetodoDePago metodoDePago;
 
+    @ManyToOne
+    @JoinColumn(name = "estacion_origen_id", referencedColumnName = "estacion_id")
+    private Estacion estacionOrigen;
+
+    @ManyToOne
+    @JoinColumn(name = "estacion_destino_id", referencedColumnName = "estacion_id")
+    private Estacion estacionDestino;
 }
 
 
