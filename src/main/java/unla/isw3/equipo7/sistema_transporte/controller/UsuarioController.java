@@ -2,10 +2,12 @@ package unla.isw3.equipo7.sistema_transporte.controller;
 
 import unla.isw3.equipo7.sistema_transporte.entity.Usuario;
 import unla.isw3.equipo7.sistema_transporte.model.UsuarioModelCrear;
+import unla.isw3.equipo7.sistema_transporte.model.UsuarioModelLogin;
 import unla.isw3.equipo7.sistema_transporte.model.UsuarioModelActualizar;
 import unla.isw3.equipo7.sistema_transporte.model.UsuarioModelTraer;
 import unla.isw3.equipo7.sistema_transporte.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +38,7 @@ public class UsuarioController {
     // Crear nuevo usuario
     @PostMapping("/crear")
     public ResponseEntity<Usuario> crear(@RequestBody UsuarioModelCrear model) {
+        System.out.println("Se llamo al servicio Crear");
         Usuario nuevo = new Usuario();
         nuevo.setNombre(model.getNombre());
         nuevo.setApellido(model.getApellido());
@@ -51,7 +54,7 @@ public class UsuarioController {
     // Actualizar usuario
     @PutMapping("/actualizar")
     public ResponseEntity<Usuario> actualizar(@RequestBody UsuarioModelActualizar model) {
-        Optional<Usuario> existente = usuarioService.obtenerPorId(model.getId());
+        Optional<Usuario> existente = usuarioService.obtenerPorId(model.getId_usuario());
         if (existente.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -63,7 +66,7 @@ public class UsuarioController {
         usuario.setPassword(model.getPassword());        
         usuario.setTipo_documento(model.getTipo_documento());
         usuario.setNumero_documento(model.getNumero_documento());
-
+        usuario.setSaldo(model.getSaldo());
         Usuario actualizado = usuarioService.actualizarUsuario(usuario);
         return ResponseEntity.ok(actualizado);
     }
@@ -79,4 +82,16 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
         return ResponseEntity.ok().build();
     }
+
+     @PostMapping("/index")
+    public ResponseEntity<Usuario> login(@RequestBody UsuarioModelLogin model) {
+        System.out.println("Llegó una petición al login");
+
+        Optional<Usuario> usuario = usuarioService.autenticarUsuario(model.getEmail(), model.getPassword());
+
+        return usuario
+            .map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+
 }
