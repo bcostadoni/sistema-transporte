@@ -34,5 +34,9 @@ public class UsuarioService {
     public List<Usuario> obtenerTodos() {
         return usuarioRepository.findAll();
     }
+
+    public Optional<Usuario> autenticarUsuario(String email, String password) {
+        return usuarioRepository.findByEmailAndPassword(email, password);
+    }
     
 }
