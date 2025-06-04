@@ -1,0 +1,47 @@
+.recarga-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.recarga-container h1 {
+  color: #0057b8;
+  margin-bottom: 20px;
+}
+
+.recarga-container p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.recarga-container input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.recarga-container button {
+  width: 100%;
+  background-color: #0070d1;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.recarga-container button:hover {
+  background-color: #005bb5;
+}
