@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const usuario = JSON.parse(usuarioGuardado);
-  const idUsuario = usuario.idUsuario;
+  const idUsuario = usuario.id;
 
   let saldoActual = 0;
 
