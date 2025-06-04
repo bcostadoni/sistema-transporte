@@ -42,8 +42,6 @@ public class RecargaController {
     public ResponseEntity<Recarga> crear(@RequestBody RecargaModelCrear model) {
         Recarga nueva = new Recarga();
         nueva.setFecha(model.getFecha());
-        nueva.setCanal(model.getCanal());
-        nueva.setValidacion(model.getValidacion());
 
         usuarioService.obtenerPorId(model.getUsuarioId()).ifPresent(nueva::setUsuario);
         metodoDePagoService.obtenerPorId(model.getMetodoPagoId()).ifPresent(nueva::setMetodoDePago);
@@ -61,8 +59,6 @@ public class RecargaController {
 
         Recarga recarga = existente.get();
         recarga.setFecha(model.getFecha());
-        recarga.setCanal(model.getCanal());
-        recarga.setValidacion(model.getValidacion());
 
         usuarioService.obtenerPorId(model.getUsuarioId()).ifPresent(recarga::setUsuario);
         metodoDePagoService.obtenerPorId(model.getMetodoPagoId()).ifPresent(recarga::setMetodoDePago);

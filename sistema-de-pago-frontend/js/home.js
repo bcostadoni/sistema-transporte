@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("usuario guardado en localStorage:", usuarioGuardado);
 
   if (!usuarioGuardado) {
-    window.location.href = "index.html";
+    window.location.href = "login.html";
     return;
   }
 
   const usuario = JSON.parse(usuarioGuardado);
-  const idUsuario = usuario.id_usuario;
+  const idUsuario = usuario.idUsuario;
 
   fetch("http://localhost:8080/usuarios/traer", {
     method: "POST",
@@ -34,6 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("cerrar-sesion").addEventListener("click", () => {
     localStorage.removeItem("usuario");
-    window.location.href = "index.html";
+    window.location.href = "login.html";
   });
 });

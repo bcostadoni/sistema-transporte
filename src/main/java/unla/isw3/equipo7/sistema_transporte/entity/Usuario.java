@@ -1,5 +1,6 @@
 package unla.isw3.equipo7.sistema_transporte.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,8 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_usuario;
+    @Column(name = "id") // <- columna en la base de datos
+    private Integer id;   // <- propiedad Java (camelCase)
     private String nombre;
     private String apellido;
     private String email;

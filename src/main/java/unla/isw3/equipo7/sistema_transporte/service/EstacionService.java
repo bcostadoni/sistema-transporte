@@ -31,7 +31,7 @@ public class EstacionService {
     // Actualizar estación existente
     public Estacion actualizar(Estacion estacion) {
         // Validar que la estación ya existe
-        if (estacion.getEstacionId() == null || !estacionRepository.existsById(estacion.getEstacionId())) {
+        if (estacion.getId() == null || !estacionRepository.existsById(estacion.getId())) {
             throw new IllegalArgumentException("La estación no existe o no tiene ID.");
         }
         return estacionRepository.save(estacion);
