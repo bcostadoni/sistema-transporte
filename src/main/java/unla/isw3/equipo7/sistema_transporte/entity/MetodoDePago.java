@@ -11,7 +11,7 @@ import lombok.Data;
 public class MetodoDePago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_metodo_pago;
+    private Integer id;
     private String tipo;
     private String proveedor;
     

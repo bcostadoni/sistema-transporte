@@ -2,9 +2,7 @@ package unla.isw3.equipo7.sistema_transporte.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import unla.isw3.equipo7.sistema_transporte.entity.Usuario;
 import unla.isw3.equipo7.sistema_transporte.entity.Viaje;
-import unla.isw3.equipo7.sistema_transporte.repository.IUsuarioRepository;
 import unla.isw3.equipo7.sistema_transporte.repository.IViajeRepository;
 
 import java.util.List;
@@ -34,5 +32,9 @@ public class ViajeService {
 
     public List<Viaje> obtenerTodos() {
         return viajeRepository.findAll();
+    }
+
+    public List<Viaje> obtenerPorUsuario(Integer usuarioId) {
+        return viajeRepository.findByUsuarioId(usuarioId);
     }
 }

@@ -21,7 +21,7 @@ document.getElementById("registroForm").addEventListener("submit", function (eve
   .then((response) => {
     if (response.ok) {
         // Redireccionar al login
-        window.location.href = "../pages/index.html";
+        window.location.href = "login.html";
     } else {
         document.getElementById("mensaje").textContent = "Error al registrar usuario.";
     }

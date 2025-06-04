@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unla.isw3.equipo7.sistema_transporte.entity.MetodoDePago;
-
 import unla.isw3.equipo7.sistema_transporte.repository.IMetodoDePagoRepository;
 
 @Service

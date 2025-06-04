@@ -40,8 +40,7 @@ form label {
   color: #333;
 }
 
-input[type="email"],
-input[type="password"] {
+input {
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.3rem;
@@ -50,7 +49,7 @@ input[type="password"] {
   font-size: 1rem;
 }
 
-button[type="submit"] {
+button {
   width: 100%;
   background-color: #0066b3;
   color: white;
@@ -63,7 +62,7 @@ button[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+button:hover {
   background-color: #005499;
 }
 
@@ -87,4 +86,44 @@ button[type="submit"]:hover {
 
 .registro-link a:hover {
   text-decoration: underline;
+}
+
+.home-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+h1 {
+  color: #0057b8;
+  margin-bottom: 20px;
+}
+
+.saldo {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  background-color: #0070d1;
+  color: white;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #005bb5;
 }
