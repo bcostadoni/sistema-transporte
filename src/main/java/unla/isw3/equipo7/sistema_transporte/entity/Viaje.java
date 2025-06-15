@@ -17,10 +17,10 @@ public class Viaje {
     private LocalDateTime fechaHora;
     @Column(name = "monto")
     private float monto;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id")
     private MetodoDePago metodoDePago;
 

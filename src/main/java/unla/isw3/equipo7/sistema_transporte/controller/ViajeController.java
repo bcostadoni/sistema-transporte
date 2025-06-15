@@ -54,13 +54,10 @@ public class ViajeController {
         nuevo.setFechaHora(model.getFechaHora());
         nuevo.setMonto(model.getMonto());
 
-        // Set usuario
         usuarioService.obtenerPorId(model.getUsuarioId()).ifPresent(nuevo::setUsuario);
 
-        // Set método de pago
         metodoDePagoService.obtenerPorId(model.getMetodoPagoId()).ifPresent(nuevo::setMetodoDePago);
 
-        // Set estaciones
         estacionService.obtenerPorId(model.getEstacionOrigenId()).ifPresent(nuevo::setEstacionOrigen);
         estacionService.obtenerPorId(model.getEstacionDestinoId()).ifPresent(nuevo::setEstacionDestino);
 
