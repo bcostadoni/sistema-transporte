@@ -17,10 +17,10 @@ public class Recarga {
     private LocalDateTime fecha;
     @Column(name = "monto")
     private Double monto;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "metodo_pago_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id")
     private MetodoDePago metodoDePago;
 }
