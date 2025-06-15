@@ -31,6 +31,12 @@ public class ViajeService {
             Usuario usuarioExistente = usuarioExistenteOpt.get();
 
             Double saldoActual = usuarioExistente.getSaldo() != null ? usuarioExistente.getSaldo() : 0.0;
+
+            // Validar si el saldo es suficiente
+            if (saldoActual < viaje.getMonto()) {
+                throw new IllegalArgumentException("Saldo insuficiente para realizar el viaje. Saldo actual: "
+                        + saldoActual + ", monto del viaje: " + viaje.getMonto());
+            }
             usuarioExistente.setSaldo(saldoActual - viaje.getMonto());
 
             usuarioRepository.save(usuarioExistente);
