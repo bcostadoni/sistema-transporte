@@ -7,8 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class RecargaModelCrear {
     private LocalDateTime fecha;
-    private String canal;
-    private String validacion;
+    private Double monto;
     private Integer usuarioId;
     private Integer metodoPagoId;
 }
