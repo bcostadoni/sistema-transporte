@@ -4,15 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unla.isw3.equipo7.sistema_transporte.entity.Recarga;
+import unla.isw3.equipo7.sistema_transporte.dtos.RecargaDTO;
 import unla.isw3.equipo7.sistema_transporte.model.RecargaModelActualizar;
 import unla.isw3.equipo7.sistema_transporte.model.RecargaModelCrear;
 import unla.isw3.equipo7.sistema_transporte.model.RecargaModelTraer;
+import unla.isw3.equipo7.sistema_transporte.model.RecargaModelTraerLista;
 import unla.isw3.equipo7.sistema_transporte.service.MetodoDePagoService;
 import unla.isw3.equipo7.sistema_transporte.service.RecargaService;
 import unla.isw3.equipo7.sistema_transporte.service.UsuarioService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/recargas")
@@ -36,6 +39,11 @@ public class RecargaController {
     public ResponseEntity<Recarga> obtenerPorId(@RequestBody RecargaModelTraer model) {
         Optional<Recarga> recarga = recargaService.obtenerPorId(model.getId());
         return recarga.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    @PostMapping("/traer/lista")
+    public List<RecargaDTO> obtenerPorId(@RequestBody RecargaModelTraerLista model) {
+        List<RecargaDTO> recargas = recargaService.obtenerRecargasPorUsuarioId(model.getUsuarioId());
+        return recargas;
     }
 
     @PostMapping("/crear")

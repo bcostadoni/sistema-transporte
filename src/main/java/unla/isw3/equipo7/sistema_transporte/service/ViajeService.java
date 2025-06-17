@@ -1,7 +1,12 @@
 package unla.isw3.equipo7.sistema_transporte.service;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import unla.isw3.equipo7.sistema_transporte.dtos.RecargaDTO;
+import unla.isw3.equipo7.sistema_transporte.dtos.ViajesDTO;
+import unla.isw3.equipo7.sistema_transporte.entity.Recarga;
 import unla.isw3.equipo7.sistema_transporte.entity.Usuario;
 import unla.isw3.equipo7.sistema_transporte.entity.Viaje;
 import unla.isw3.equipo7.sistema_transporte.repository.IEstacionRepository;
@@ -10,6 +15,7 @@ import unla.isw3.equipo7.sistema_transporte.repository.IViajeRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ViajeService {
@@ -66,7 +72,19 @@ public class ViajeService {
         return viajeRepository.findAll();
     }
 
-    public List<Viaje> obtenerPorUsuario(Integer usuarioId) {
-        return viajeRepository.findByUsuarioId(usuarioId);
+    @Transactional
+    public List<ViajesDTO> obtenerPorUsuario(Integer usuarioId) {
+        List<Viaje> viajes= viajeRepository.findByUsuarioId(usuarioId);
+
+        viajes.forEach(r -> Hibernate.initialize(r.getMetodoDePago()));
+        viajes.forEach(r -> Hibernate.initialize(r.getUsuario()));
+        viajes.forEach(r -> Hibernate.initialize(r.getEstacionDestino()));
+        viajes.forEach(r -> Hibernate.initialize(r.getEstacionOrigen()));
+
+        return viajes.stream()
+                .map(ViajesDTO::new)
+                .collect(Collectors.toList());
     }
+
+
 }

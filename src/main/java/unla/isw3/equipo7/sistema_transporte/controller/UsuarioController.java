@@ -46,6 +46,7 @@ public class UsuarioController {
         nuevo.setPassword(model.getPassword());
         nuevo.setTipo_documento(model.getTipo_documento());
         nuevo.setNumero_documento(model.getNumero_documento());
+        nuevo.setSaldo(0d);
 
         Usuario guardado = usuarioService.crearUsuario(nuevo);
         return ResponseEntity.ok(guardado);
