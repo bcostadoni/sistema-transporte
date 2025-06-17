@@ -3,6 +3,7 @@ package unla.isw3.equipo7.sistema_transporte.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import unla.isw3.equipo7.sistema_transporte.dtos.ViajesDTO;
 import unla.isw3.equipo7.sistema_transporte.entity.Viaje;
 import unla.isw3.equipo7.sistema_transporte.model.ViajeModelActualizar;
 import unla.isw3.equipo7.sistema_transporte.model.ViajeModelCrear;
@@ -43,9 +44,9 @@ public class ViajeController {
         return viaje.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("traer/usuario/{id}")
-    public ResponseEntity<List<Viaje>> obtenerPorUsuario(@PathVariable Integer id) {
-        return ResponseEntity.ok(viajeService.obtenerPorUsuario(id));
+    @GetMapping("/traer/usuario/{id}")
+    public List<ViajesDTO> obtenerPorUsuario(@PathVariable Integer id) {
+        return viajeService.obtenerPorUsuario(id);
     }
 
     @PostMapping("/crear")

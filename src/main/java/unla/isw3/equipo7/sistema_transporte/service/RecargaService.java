@@ -1,7 +1,10 @@
 package unla.isw3.equipo7.sistema_transporte.service;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import unla.isw3.equipo7.sistema_transporte.dtos.RecargaDTO;
 import unla.isw3.equipo7.sistema_transporte.entity.Recarga;
 import unla.isw3.equipo7.sistema_transporte.entity.Usuario;
 import unla.isw3.equipo7.sistema_transporte.repository.IRecargaRepository;
@@ -9,6 +12,7 @@ import unla.isw3.equipo7.sistema_transporte.repository.IUsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RecargaService {
@@ -20,6 +24,18 @@ public class RecargaService {
     public RecargaService(IRecargaRepository recargaRepository, IUsuarioRepository usuarioRepository) {
         this.recargaRepository = recargaRepository;
         this.usuarioRepository = usuarioRepository;
+    }
+
+    @Transactional(readOnly = true)
+    public List<RecargaDTO> obtenerRecargasPorUsuarioId(Integer usuarioId) {
+        List<Recarga> recargas = recargaRepository.findByUsuarioId(usuarioId);
+
+        // Inicializa la relación LAZY
+        recargas.forEach(r -> Hibernate.initialize(r.getMetodoDePago()));
+
+        return recargas.stream()
+                .map(RecargaDTO::new)
+                .collect(Collectors.toList());
     }
 
     public List<Recarga> obtenerTodas() {
